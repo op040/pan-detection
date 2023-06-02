@@ -9,16 +9,16 @@
 						"referenceName": "empdata",
 						"type": "DatasetReference"
 					},
-					"name": "SplitbasedonTrack"
+					"name": "splitonthebasisoftrack"
 				}
 			],
 			"sinks": [
 				{
 					"dataset": {
-						"referenceName": "output",
+						"referenceName": "DelimitedText1",
 						"type": "DatasetReference"
 					},
-					"name": "sink1"
+					"name": "PaaS"
 				}
 			],
 			"transformations": [
@@ -28,31 +28,30 @@
 			],
 			"scriptLines": [
 				"source(output(",
-				"          {Emp ID} as string,",
+				"          Emp as string,",
 				"          Name as string,",
 				"          Location as string,",
 				"          Track as string",
 				"     ),",
 				"     allowSchemaDrift: true,",
 				"     validateSchema: false,",
-				"     ignoreNoFilesFound: false) ~> SplitbasedonTrack",
-				"SplitbasedonTrack split(equals(Track, \"PaaS\"),",
+				"     ignoreNoFilesFound: false) ~> splitonthebasisoftrack",
+				"splitonthebasisoftrack split(equals(Track,\"PaaS\"),",
 				"     equals(Track, \"SaaS\"),",
 				"     equals(Track, \"IaaS\"),",
-				"     disjoint: false) ~> split1@(PaaS, SaaS, IaaS, otherdata)",
+				"     disjoint: false) ~> split1@(PaaS, SaaS, IaaS, oother)",
 				"split1@PaaS sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     input(",
 				"          Column_1 as string,",
 				"          Column_2 as string,",
 				"          Column_3 as string,",
-				"          Column_4 as string",
+				"          Column_4 as string,",
+				"          Column_5 as string,",
+				"          Column_6 as string",
 				"     ),",
-				"     umask: 0022,",
-				"     preCommands: [],",
-				"     postCommands: [],",
 				"     skipDuplicateMapInputs: true,",
-				"     skipDuplicateMapOutputs: true) ~> sink1"
+				"     skipDuplicateMapOutputs: true) ~> PaaS"
 			]
 		}
 	}

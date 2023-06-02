@@ -3,8 +3,8 @@
 	"properties": {
 		"activities": [
 			{
-				"name": "test-copy",
-				"type": "Copy",
+				"name": "Data flow1",
+				"type": "ExecuteDataFlow",
 				"dependsOn": [],
 				"policy": {
 					"timeout": "0.12:00:00",
@@ -15,54 +15,20 @@
 				},
 				"userProperties": [],
 				"typeProperties": {
-					"source": {
-						"type": "DelimitedTextSource",
-						"storeSettings": {
-							"type": "AzureBlobStorageReadSettings",
-							"recursive": true,
-							"enablePartitionDiscovery": false
-						},
-						"formatSettings": {
-							"type": "DelimitedTextReadSettings"
-						}
+					"dataflow": {
+						"referenceName": "dataflow1",
+						"type": "DataFlowReference"
 					},
-					"sink": {
-						"type": "DelimitedTextSink",
-						"storeSettings": {
-							"type": "AzureBlobStorageWriteSettings"
-						},
-						"formatSettings": {
-							"type": "DelimitedTextWriteSettings",
-							"quoteAllText": true,
-							"fileExtension": ".txt"
-						}
+					"compute": {
+						"coreCount": 8,
+						"computeType": "General"
 					},
-					"enableStaging": false,
-					"translator": {
-						"type": "TabularTranslator",
-						"typeConversion": true,
-						"typeConversionSettings": {
-							"allowDataTruncation": true,
-							"treatBooleanAsNumber": false
-						}
-					}
-				},
-				"inputs": [
-					{
-						"referenceName": "input_data",
-						"type": "DatasetReference"
-					}
-				],
-				"outputs": [
-					{
-						"referenceName": "output_data",
-						"type": "DatasetReference"
-					}
-				]
+					"traceLevel": "Fine"
+				}
 			}
 		],
 		"annotations": [],
-		"lastPublishTime": "2023-06-02T03:20:47Z"
+		"lastPublishTime": "2023-06-02T13:27:07Z"
 	},
 	"type": "Microsoft.DataFactory/factories/pipelines"
 }
