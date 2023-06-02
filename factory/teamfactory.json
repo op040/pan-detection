@@ -1,0 +1,9 @@
+{
+	"name": "teamfactory",
+	"location": "centralindia",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "1311dfff-69f9-47f1-b8ef-ddcc7577a25a",
+		"tenantId": "5463f38f-9552-4380-9c67-5623549ef896"
+	}
+}
