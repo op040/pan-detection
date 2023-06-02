@@ -1,0 +1,9 @@
+{
+	"name": "adfom",
+	"location": "eastus",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "419cdc3e-216d-4f3b-877e-2fdc3f99e2d5",
+		"tenantId": "5463f38f-9552-4380-9c67-5623549ef896"
+	}
+}

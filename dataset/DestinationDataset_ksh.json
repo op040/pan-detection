@@ -1,0 +1,19 @@
+{
+	"name": "DestinationDataset_ksh",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureBlobStorage1",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Binary",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "export.csv",
+				"container": "dcontnr"
+			}
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}
